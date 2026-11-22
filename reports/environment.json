@@ -1,0 +1,24 @@
+{
+  "captured_at_utc": "2026-11-22T02:05:43.374290+00:00",
+  "python": "3.11.5",
+  "executable": "C:\\Users\\jettw\\Documents\\Fall2026\\ML\\EcoSystem\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "jupyterlab": "4.6.6",
+    "ipykernel": "7.4.0",
+    "joblib": "1.6.0"
+  },
+  "seeds": {
+    "split": 42,
+    "model": 42,
+    "bootstrap": 42
+  },
+  "compute": "CPU; optional JAX/Optax deferred",
+  "status": "environment_verified; no model trained"
+}

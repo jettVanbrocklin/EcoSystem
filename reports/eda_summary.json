@@ -1,0 +1,355 @@
+{
+  "scope": "development_train only",
+  "rows": 1600,
+  "dataset_revision": "d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2",
+  "source_sha256": {
+    "train.csv": "15bd6bc0fccf0a9db831b263e2a884dfb62227dad22ba54d3cd16ccaf31c2964",
+    "test.csv": "07cf4d6a665aeed2796fe71524593b8074c0248d21b1d9bc41240b94c531f57d"
+  },
+  "membership_sha256": "27ae396b2ad841cf89ee153e6b61609064efc5acd7f8916114505cb9fa88490e",
+  "class_counts": {
+    "healthy": 192,
+    "moderate_stress": 743,
+    "high_stress": 665
+  },
+  "class_proportions": {
+    "healthy": 0.12,
+    "moderate_stress": 0.464375,
+    "high_stress": 0.415625
+  },
+  "majority_class": "moderate_stress",
+  "majority_accuracy": 0.464375,
+  "missing_counts": {
+    "record_id": 0,
+    "plant_type": 0,
+    "habitat": 0,
+    "season": 0,
+    "air_humidity_pct": 0,
+    "soil_humidity_pct": 0,
+    "ethylene_ppm": 0,
+    "co2_ppm": 0,
+    "o2_ppm": 0,
+    "ldr_on_plant": 0,
+    "leaf_color_index": 0,
+    "temperature_c": 0,
+    "health_score": 0,
+    "health_class": 0
+  },
+  "category_counts": {
+    "plant_type": {
+      "pothos": 221,
+      "rose": 209,
+      "mint": 202,
+      "lettuce": 199,
+      "aloe_vera": 196,
+      "tomato": 196,
+      "snake_plant": 190,
+      "basil": 187
+    },
+    "habitat": {
+      "greenhouse": 440,
+      "indoor": 419,
+      "garden": 307,
+      "shade_house": 214,
+      "hydroponic": 112,
+      "arid_garden": 108
+    },
+    "season": {
+      "summer": 342,
+      "winter": 319,
+      "spring": 316,
+      "monsoon": 315,
+      "autumn": 308
+    }
+  },
+  "numeric_summary": {
+    "air_humidity_pct": {
+      "count": 1600.0,
+      "mean": 59.288999999999994,
+      "std": 19.95794744685515,
+      "min": 25.0,
+      "25%": 42.575,
+      "50%": 58.7,
+      "75%": 76.2,
+      "max": 93.9
+    },
+    "soil_humidity_pct": {
+      "count": 1600.0,
+      "mean": 48.9731875,
+      "std": 23.417722581875243,
+      "min": 8.1,
+      "25%": 29.775,
+      "50%": 48.599999999999994,
+      "75%": 68.725,
+      "max": 90.0
+    },
+    "ethylene_ppm": {
+      "count": 1600.0,
+      "mean": 1.2373625,
+      "std": 0.7060539028040215,
+      "min": 0.001,
+      "25%": 0.643,
+      "50%": 1.2225000000000001,
+      "75%": 1.812,
+      "max": 2.496
+    },
+    "co2_ppm": {
+      "count": 1600.0,
+      "mean": 793.5975,
+      "std": 267.0661541883314,
+      "min": 330.5,
+      "25%": 559.225,
+      "50%": 794.1,
+      "75%": 1033.2,
+      "max": 1249.7
+    },
+    "o2_ppm": {
+      "count": 1600.0,
+      "mean": 19.869600000000002,
+      "std": 0.9614445900895083,
+      "min": 18.2,
+      "25%": 19.04,
+      "50%": 19.83,
+      "75%": 20.75,
+      "max": 21.5
+    },
+    "ldr_on_plant": {
+      "count": 1600.0,
+      "mean": 518.1575,
+      "std": 291.50085662332555,
+      "min": 30.0,
+      "25%": 261.75,
+      "50%": 512.5,
+      "75%": 774.25,
+      "max": 1023.0
+    },
+    "leaf_color_index": {
+      "count": 1600.0,
+      "mean": 59.951875,
+      "std": 23.186950924336834,
+      "min": 20.1,
+      "25%": 39.0,
+      "50%": 60.7,
+      "75%": 80.42500000000001,
+      "max": 100.0
+    },
+    "temperature_c": {
+      "count": 1600.0,
+      "mean": 22.683249999999997,
+      "std": 8.654971101365875,
+      "min": 8.0,
+      "25%": 15.1,
+      "50%": 22.9,
+      "75%": 29.8,
+      "max": 38.0
+    }
+  },
+  "sensor_pearson_correlations": {
+    "air_humidity_pct": {
+      "air_humidity_pct": 1.0,
+      "soil_humidity_pct": 0.0025481823309502667,
+      "ethylene_ppm": 0.010955347294982454,
+      "co2_ppm": 0.0038028123737434,
+      "o2_ppm": -0.02566785394313792,
+      "ldr_on_plant": 0.021128754380356215,
+      "leaf_color_index": 0.012154817064419728,
+      "temperature_c": 0.03143341611160939
+    },
+    "soil_humidity_pct": {
+      "air_humidity_pct": 0.0025481823309502667,
+      "soil_humidity_pct": 1.0,
+      "ethylene_ppm": -0.0437636094730666,
+      "co2_ppm": -0.0017239171975414508,
+      "o2_ppm": -0.011241147069607185,
+      "ldr_on_plant": 0.003916165797418288,
+      "leaf_color_index": 0.02678064530629268,
+      "temperature_c": 0.03669912698700391
+    },
+    "ethylene_ppm": {
+      "air_humidity_pct": 0.010955347294982454,
+      "soil_humidity_pct": -0.0437636094730666,
+      "ethylene_ppm": 1.0,
+      "co2_ppm": -0.013234314346766444,
+      "o2_ppm": -0.012731451337328836,
+      "ldr_on_plant": 0.020898811825370584,
+      "leaf_color_index": 0.0403057338727014,
+      "temperature_c": -0.019742139141077697
+    },
+    "co2_ppm": {
+      "air_humidity_pct": 0.0038028123737434,
+      "soil_humidity_pct": -0.0017239171975414508,
+      "ethylene_ppm": -0.013234314346766444,
+      "co2_ppm": 1.0,
+      "o2_ppm": 0.0003385707754792097,
+      "ldr_on_plant": -0.010378523819614112,
+      "leaf_color_index": -0.016208238067069673,
+      "temperature_c": 0.019961990589745456
+    },
+    "o2_ppm": {
+      "air_humidity_pct": -0.02566785394313792,
+      "soil_humidity_pct": -0.011241147069607185,
+      "ethylene_ppm": -0.012731451337328836,
+      "co2_ppm": 0.0003385707754792097,
+      "o2_ppm": 1.0,
+      "ldr_on_plant": -0.0006427008593554948,
+      "leaf_color_index": 0.006037884830054777,
+      "temperature_c": -0.0370725341284107
+    },
+    "ldr_on_plant": {
+      "air_humidity_pct": 0.021128754380356215,
+      "soil_humidity_pct": 0.003916165797418288,
+      "ethylene_ppm": 0.020898811825370584,
+      "co2_ppm": -0.010378523819614112,
+      "o2_ppm": -0.0006427008593554948,
+      "ldr_on_plant": 1.0,
+      "leaf_color_index": -0.00899029137570628,
+      "temperature_c": 0.015703939348902175
+    },
+    "leaf_color_index": {
+      "air_humidity_pct": 0.012154817064419728,
+      "soil_humidity_pct": 0.02678064530629268,
+      "ethylene_ppm": 0.0403057338727014,
+      "co2_ppm": -0.016208238067069673,
+      "o2_ppm": 0.006037884830054777,
+      "ldr_on_plant": -0.00899029137570628,
+      "leaf_color_index": 1.0,
+      "temperature_c": -0.021521783708931656
+    },
+    "temperature_c": {
+      "air_humidity_pct": 0.03143341611160939,
+      "soil_humidity_pct": 0.03669912698700391,
+      "ethylene_ppm": -0.019742139141077697,
+      "co2_ppm": 0.019961990589745456,
+      "o2_ppm": -0.0370725341284107,
+      "ldr_on_plant": 0.015703939348902175,
+      "leaf_color_index": -0.021521783708931656,
+      "temperature_c": 1.0
+    }
+  },
+  "strongest_sensor_pairs": [
+    {
+      "feature_a": "soil_humidity_pct",
+      "feature_b": "ethylene_ppm",
+      "pearson_r": -0.0437636094730666
+    },
+    {
+      "feature_a": "ethylene_ppm",
+      "feature_b": "leaf_color_index",
+      "pearson_r": 0.0403057338727014
+    },
+    {
+      "feature_a": "o2_ppm",
+      "feature_b": "temperature_c",
+      "pearson_r": -0.0370725341284107
+    },
+    {
+      "feature_a": "soil_humidity_pct",
+      "feature_b": "temperature_c",
+      "pearson_r": 0.03669912698700391
+    },
+    {
+      "feature_a": "air_humidity_pct",
+      "feature_b": "temperature_c",
+      "pearson_r": 0.03143341611160939
+    }
+  ],
+  "sensor_score_pearson_r": {
+    "air_humidity_pct": -0.018372496345348044,
+    "soil_humidity_pct": 0.05204556995485426,
+    "ethylene_ppm": -0.316658254579982,
+    "co2_ppm": -0.10603154925244616,
+    "o2_ppm": 0.2646043009399123,
+    "ldr_on_plant": 0.023083166807830114,
+    "leaf_color_index": 0.408599390221542,
+    "temperature_c": -0.01875713304551606
+  },
+  "iqr_flag_counts": {
+    "air_humidity_pct": 0,
+    "soil_humidity_pct": 0,
+    "ethylene_ppm": 0,
+    "co2_ppm": 0,
+    "o2_ppm": 0,
+    "ldr_on_plant": 0,
+    "leaf_color_index": 0,
+    "temperature_c": 0
+  },
+  "documented_bound_violations": {
+    "air_humidity_pct": 0,
+    "soil_humidity_pct": 0,
+    "ldr_on_plant": 0,
+    "leaf_color_index": 0,
+    "health_score": 0
+  },
+  "unknown_bounds": [
+    "ethylene_ppm",
+    "co2_ppm",
+    "o2_ppm",
+    "temperature_c"
+  ],
+  "score_ranges_by_class": {
+    "healthy": {
+      "min": 80.0,
+      "max": 100.0
+    },
+    "moderate_stress": {
+      "min": 55.0,
+      "max": 79.0
+    },
+    "high_stress": {
+      "min": 0.0,
+      "max": 54.0
+    }
+  },
+  "score_values_with_multiple_classes": 0,
+  "score_threshold_agreement": 1.0,
+  "corrections": [],
+  "rows_removed": 0,
+  "threshold_audit_warning": "Post-hoc label-generation evidence on development-train only; not a validated predictive model. Score remains excluded.",
+  "figures": [
+    {
+      "file": "figures/eda_class_balance.png",
+      "title": "Class balance",
+      "interpretation": "Moderate stress is the majority class (743 of 1600; 46.44%), while healthy has only 192 records (12.00%). A constant-majority prediction therefore gives 46.44% development-training accuracy; macro F1 and per-class recall are needed to expose minority-class failures."
+    },
+    {
+      "file": "figures/eda_numeric_distributions.png",
+      "title": "Numeric sensor distributions",
+      "interpretation": "The broad, fairly flat sensor distributions are consistent with simulated ranges, rather than evidence of measured natural variability. Their scales differ substantially, motivating training-fitted standardization for linear models; uncertain gas units remain unconverted."
+    },
+    {
+      "file": "figures/eda_missing_values.png",
+      "title": "Missing values",
+      "interpretation": "All 14 development-training fields have zero missing values. No imputation or row deletion is needed for this snapshot, although a training-fitted imputer remains planned for the reusable pipeline."
+    },
+    {
+      "file": "figures/eda_category_frequencies.png",
+      "title": "Categorical frequencies",
+      "interpretation": "Plant types and seasons are relatively evenly represented, whereas habitats are uneven: greenhouse and indoor are common and arid_garden/hydroponic are much smaller groups. These counts describe coverage in synthetic development data, not real-world prevalence."
+    },
+    {
+      "file": "figures/eda_sensors_by_class.png",
+      "title": "Sensor distributions by class",
+      "interpretation": "Leaf color, ethylene, and oxygen show visible class shifts, but distributions overlap and the synthetic scoring recipe can create these associations without establishing biological causation. Boxplot fliers use within-class IQR fences, which differ from the overall-development IQR screen reported in the range audit; no fliers were removed."
+    },
+    {
+      "file": "figures/eda_categories_by_class.png",
+      "title": "Class proportions by context",
+      "interpretation": "Class proportions vary across context categories, so categorical inputs may encode part of the synthetic label-generation process. Each bar is normalized within its category; inspect the preceding frequency plot before interpreting differences in smaller groups."
+    },
+    {
+      "file": "figures/eda_sensor_correlations.png",
+      "title": "Sensor correlation matrix",
+      "interpretation": "The largest absolute off-diagonal Pearson correlation is only 0.044 (soil_humidity_pct versus ethylene_ppm); no strong linear sensor redundancy appears. Near-zero correlation does not prove independence: nonlinear dependence may remain, and correlated predictors, if present, can destabilize individual coefficients even when predictions are stable."
+    },
+    {
+      "file": "figures/eda_pairwise_sensors.png",
+      "title": "Selected sensor pairs",
+      "interpretation": "The leaf-color/ethylene panel shows class structure with substantial overlap; temperature/soil-moisture does not show an obvious single linear class boundary. These are descriptive views of two selected pairs, not evidence that remaining features are unimportant or that any classifier will generalize."
+    },
+    {
+      "file": "figures/eda_score_leakage.png",
+      "title": "Excluded score and label-generation audit",
+      "interpretation": "In these development-training records, high stress occupies scores 0-54, moderate stress 55-79, and healthy 80-100; no observed score maps to multiple classes. Thresholds at 55 and 80 reproduce all observed labels, providing post-hoc leakage evidence rather than an independently evaluated model; health_score remains excluded from all predictors."
+    }
+  ]
+}

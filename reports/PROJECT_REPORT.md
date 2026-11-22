@@ -68,10 +68,54 @@ Environmental measurements may omit disease, pests, root damage, and other cause
 
 - [Lecture notes](../documents/COE379L_lecture_notes%20%281%29.pdf): Chapter 1 supplies the model/objective/optimizer framing; Sections 7.5–7.6 connect conditional likelihood to prediction; Sections 8.3–8.5 develop cross-entropy, class decisions, and softmax.
 - [Lecture notes](../documents/COE379L_lecture_notes%20%281%29.pdf): Section 6.8.1 separates training, validation, and final test evaluation; Example 8.4.2 motivates class-specific metrics; Appendix C.7 supports local execution.
-- [Assignment 3, Q5](../../Assigments/assignment_3_3.py): selecting a validation winner creates optimism, motivating an untouched final test set.
-- [Assignment 3, Q10–Q11](../../Assigments/assignment_3_3.py): the cross-entropy gradient and separability motivate the classifier and its regularization.
-- [Assignment 2, Q5](../../Assigments/assignment_2_1.py): base-rate effects motivate reporting precision and recall alongside accuracy.
+- [Assignment 3, Q5](../Assigments/assignment_3_3.py): selecting a validation winner creates optimism, motivating an untouched final test set.
+- [Assignment 3, Q10–Q11](../Assigments/assignment_3_3.py): the cross-entropy gradient and separability motivate the classifier and its regularization.
+- [Assignment 2, Q5](../Assigments/assignment_2_1.py): base-rate effects motivate reporting precision and recall alongside accuracy.
 
 ### Completion and handoff
 
-Step 1 is complete: the problem, expected classes, model ingredients, selection metric and tie rule, and synthetic-data limitation are documented. Dataset validation remains scheduled for Steps 3–4. No training, evaluation, or performance claims have been made. Next: prepare the local workspace and environment in Step 2.
+Step 1 is complete: the problem, expected classes, model ingredients, selection metric and tie rule, and synthetic-data limitation are documented. Dataset validation remains scheduled for Steps 3–4. No training, evaluation, or performance claims have been made.
+
+## Local workspace and environment — Step 2
+
+Step 2 is complete. The existing parent-directory environment uses Python 3.11.5, and the required scientific/Jupyter packages have been installed and pinned in [requirements.txt](../requirements.txt). `pip check` reported no broken requirements. A project-local **EcoSystem (local CPU)** kernel points to that same interpreter, and [the first notebook](../notebooks/01_data_audit.ipynb) executed successfully in a fresh kernel with its outputs saved.
+
+[The environment metadata](./environment.json) records the verified interpreter, platform, direct package versions, and seeds; [the full snapshot](./environment.freeze.txt) records all installed packages. [The shared configuration](../src/config.py) defines explicit split, model, and bootstrap seeds of 42. The seeded NumPy example produced `[8, 77, 65, 43, 43]`.
+
+The planned local directories, ignore rules, and [run-metadata example](./run_metadata.example.json) are present. [Local setup instructions](../LOCAL_SETUP.md) explain interpreter/kernel selection, environment recreation, snapshot regeneration, and generated-output locations. Optional JAX/Optax are deferred; NumPy and scikit-learn provide the core CPU workflow. Course links were updated after the assignments moved inside the repository.
+
+At the end of Step 2, no dataset had been downloaded and no model had been trained.
+
+## Local dataset snapshot — Step 3
+
+Step 3 is complete. [The acquisition module](../src/download_data.py) downloaded the original train/test CSVs and source card from dataset revision `d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2`. [The provenance record](./dataset_snapshot.json) includes the exact source URLs, UTC download time, SHA-256 hashes, byte sizes, and structural counts. Original bytes are preserved locally under [data/raw/](../data/raw/); no cleaning or re-splitting has occurred.
+
+The source files match the plan: **2,000 training rows and 500 test rows, with 14 columns each**. The source card describes deterministic synthetic generation and cautions against scientific, agronomic, or plant-care use. Neither the card nor the repository files declare a license at this revision; this is recorded as unspecified, with no reuse license inferred. The expected label names are documented by the card; empirical label auditing remains Step 4.
+
+[The local loader](../src/data.py) checks snapshot identity, file hashes, schema, numeric parsing, and row counts. It never downloads files. Both real splits loaded successfully with network calls blocked, and repeated acquisition verified the existing files without rewriting them. Six self-contained [integrity/offline tests](../tests/test_data.py) passed, covering missing setup, corruption, changed schema/counts, offline reuse, and partial-snapshot overwrite protection.
+
+Test-data access was limited to integrity and structural validation. No test-label summaries, feature distributions, training, or performance evaluation were performed. [Setup instructions](../LOCAL_SETUP.md) now include acquisition, offline verification, and test commands. Next: establish feature/leakage boundaries and save development splits in Step 4.
+
+## Data and leakage boundaries — Step 4
+
+Step 4 is complete. [The boundary report](./DATA_BOUNDARIES.md) documents the eight numeric and three categorical predictors, explicit exclusions for both labels and the ID, source-confirmed units and remaining ambiguities, development-training dtypes/missingness/vocabularies, and the structural integrity audit. The training label vocabulary matches the three expected classes. Unknown gas-reading units are preserved as unknown rather than silently converted.
+
+The audit found no duplicate IDs, exact duplicate predictor rows, conflicting training labels for identical predictors, or exact train/test ID/predictor overlap. No persistent plant IDs or timestamps are supplied, so the declared seed-42 stratified random split was retained. [Saved membership](../data/processed/split_membership.csv) covers all 2,500 source records exactly once: 1,600 development-training, 400 validation, and 500 reserved test records. [Metadata](./data_boundaries.json) binds membership to the source revision and hashes; repeated generation gives identical membership bytes.
+
+[The feature helper](../src/schema.py) returns predictors, target, and IDs separately. [The development loader](../src/splits.py) verifies saved membership and loads only training-source records. Twelve data/split tests passed, including rejection of overlap, membership tampering, and test-row entry into development. The notebook executes in a fresh kernel and displays development-training schema evidence without test distributions or test-label summaries.
+
+No preprocessing or model fitting has occurred. Next: explore development-training data in Step 5.
+
+## Development-training exploration — Step 5
+
+Step 5 is complete in [the EDA report](./EDA_REPORT.md), [machine-readable summary](./eda_summary.json), and [executed notebook](../notebooks/01_data_audit.ipynb). All exploratory statistics and nine labeled figures use only the saved 1,600 development-training rows; validation and test data are excluded from this analysis.
+
+Development-train contains 192 healthy records (12.00%), 743 moderate-stress records (46.44%), and 665 high-stress records (41.56%). A constant-majority prediction would achieve 46.44% accuracy on these same records; this is a descriptive reference, not held-out performance. These proportions reinforce the predeclared macro-F1 criterion and the need to report per-class recall.
+
+Sensor-to-sensor Pearson correlations are weak: the largest absolute off-diagonal value is about 0.044. This does not establish independence or rule out nonlinear relationships. Class-conditional plots show shifts in leaf color, ethylene, and oxygen with overlap; context categories also differ in class composition. These are associations in synthetic data, not causal biological findings.
+
+There are no missing/nonfinite sensor values, documented-bound violations, or overall-development 1.5-IQR flags. Within-class boxplot fences differ and can flag observations without contradicting that overall screen. Unknown gas units remain unresolved. No corrections, conversions, imputations, or row removals were performed.
+
+The excluded `health_score` occupies nonoverlapping observed ranges: high stress 0–54, moderate stress 55–79, and healthy 80–100. Thresholds at 55 and 80 reproduce every development-training label; no observed score belongs to multiple classes. This is post-hoc evidence of synthetic label-generation leakage, not an independently evaluated model. The score remains excluded from all predictor lists.
+
+The notebook embeds all nine figures with interpretations, and [local instructions](../LOCAL_SETUP.md) document report/figure regeneration. Raw files and saved membership are unchanged. No model or preprocessing has been fitted; next is Step 6, the reusable preprocessing pipeline.

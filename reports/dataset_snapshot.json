@@ -1,0 +1,64 @@
+{
+  "dataset_id": "soumikmahato/plant-health-points-synthetic",
+  "source_url": "https://huggingface.co/datasets/soumikmahato/plant-health-points-synthetic",
+  "revision": "d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2",
+  "downloaded_at_utc": "2026-11-22T01:48:55.880101+00:00",
+  "license": null,
+  "license_status": "Not declared in dataset card or repository files at this revision; no reuse license inferred.",
+  "use_restrictions": [
+    "Educational synthetic-data modeling only.",
+    "Not appropriate for scientific conclusions, production agronomy, or plant-care decisions.",
+    "Do not use either label as a predictor of the other label."
+  ],
+  "files": {
+    "README.md": {
+      "source_url": "https://huggingface.co/datasets/soumikmahato/plant-health-points-synthetic/resolve/d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2/README.md",
+      "sha256": "bafc3e9d32023329d2ebf8da85f41232d405306a51106433bde78bb6886a8efe",
+      "bytes": 1548
+    },
+    "train.csv": {
+      "source_url": "https://huggingface.co/datasets/soumikmahato/plant-health-points-synthetic/resolve/d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2/train.csv",
+      "sha256": "15bd6bc0fccf0a9db831b263e2a884dfb62227dad22ba54d3cd16ccaf31c2964",
+      "bytes": 182794,
+      "rows": 2000,
+      "columns": [
+        "record_id",
+        "plant_type",
+        "habitat",
+        "season",
+        "air_humidity_pct",
+        "soil_humidity_pct",
+        "ethylene_ppm",
+        "co2_ppm",
+        "o2_ppm",
+        "ldr_on_plant",
+        "leaf_color_index",
+        "temperature_c",
+        "health_score",
+        "health_class"
+      ]
+    },
+    "test.csv": {
+      "source_url": "https://huggingface.co/datasets/soumikmahato/plant-health-points-synthetic/resolve/d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2/test.csv",
+      "sha256": "07cf4d6a665aeed2796fe71524593b8074c0248d21b1d9bc41240b94c531f57d",
+      "bytes": 45889,
+      "rows": 500,
+      "columns": [
+        "record_id",
+        "plant_type",
+        "habitat",
+        "season",
+        "air_humidity_pct",
+        "soil_humidity_pct",
+        "ethylene_ppm",
+        "co2_ppm",
+        "o2_ppm",
+        "ldr_on_plant",
+        "leaf_color_index",
+        "temperature_c",
+        "health_score",
+        "health_class"
+      ]
+    }
+  }
+}

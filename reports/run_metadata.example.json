@@ -1,0 +1,19 @@
+{
+  "status": "example_only_no_model_trained",
+  "dataset": {
+    "source": "soumikmahato/plant-health-points-synthetic",
+    "revision": null,
+    "downloaded_at_utc": null,
+    "file_sha256": {}
+  },
+  "seeds": {
+    "split": 42,
+    "model": 42,
+    "bootstrap": 42
+  },
+  "environment_file": "reports/environment.json",
+  "features": [],
+  "classes": [],
+  "model": null,
+  "metrics": {}
+}

@@ -1,3 +1,9 @@
+## Verified local setup
+
+Steps 1–5 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for local reproduction commands and [the data-audit notebook](./notebooks/01_data_audit.ipynb) for executed analysis. [Data boundaries](./reports/DATA_BOUNDARIES.md) define allowed inputs and the 1,600/400/500 development-training/validation/test partitions. [The EDA report](./reports/EDA_REPORT.md) explores development-train only, including class imbalance and excluded-score leakage. No preprocessing or model fitting has occurred.
+
+The project description template below is retained for completion as the dataset and implementation are verified.
+
 [Project Name]
 Replace bracketed placeholders with your project details. Remove sections that do not apply.
 

@@ -1,0 +1,201 @@
+{
+  "revision": "d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2",
+  "source_sha256": {
+    "train.csv": "15bd6bc0fccf0a9db831b263e2a884dfb62227dad22ba54d3cd16ccaf31c2964",
+    "test.csv": "07cf4d6a665aeed2796fe71524593b8074c0248d21b1d9bc41240b94c531f57d"
+  },
+  "seed": 42,
+  "validation_fraction": 0.2,
+  "method": "stratified random split of provided train only; no plant-identity/time fields supplied",
+  "membership_sha256": "27ae396b2ad841cf89ee153e6b61609064efc5acd7f8916114505cb9fa88490e",
+  "counts": {
+    "development_train": 1600,
+    "test": 500,
+    "validation": 400
+  },
+  "numeric_features": [
+    "air_humidity_pct",
+    "soil_humidity_pct",
+    "ethylene_ppm",
+    "co2_ppm",
+    "o2_ppm",
+    "ldr_on_plant",
+    "leaf_color_index",
+    "temperature_c"
+  ],
+  "categorical_features": [
+    "plant_type",
+    "habitat",
+    "season"
+  ],
+  "excluded_columns": [
+    "record_id",
+    "health_score",
+    "health_class"
+  ],
+  "target": "health_class",
+  "classes": [
+    "healthy",
+    "moderate_stress",
+    "high_stress"
+  ],
+  "integrity": {
+    "train_missing_ids": 0,
+    "test_missing_ids": 0,
+    "train_duplicate_ids": 0,
+    "test_duplicate_ids": 0,
+    "train_duplicate_predictor_rows": 0,
+    "test_duplicate_predictor_rows": 0,
+    "train_conflicting_predictor_groups": 0,
+    "cross_split_id_overlap": 0,
+    "cross_split_predictor_overlap": 0
+  },
+  "schema_scope": "development_train only",
+  "schema": [
+    {
+      "column": "record_id",
+      "loaded_dtype": "string",
+      "role": "excluded",
+      "development_train_missing": 0
+    },
+    {
+      "column": "plant_type",
+      "loaded_dtype": "string",
+      "role": "categorical_predictor",
+      "development_train_missing": 0,
+      "observed_categories": [
+        "aloe_vera",
+        "basil",
+        "lettuce",
+        "mint",
+        "pothos",
+        "rose",
+        "snake_plant",
+        "tomato"
+      ],
+      "category_count": 8
+    },
+    {
+      "column": "habitat",
+      "loaded_dtype": "string",
+      "role": "categorical_predictor",
+      "development_train_missing": 0,
+      "observed_categories": [
+        "arid_garden",
+        "garden",
+        "greenhouse",
+        "hydroponic",
+        "indoor",
+        "shade_house"
+      ],
+      "category_count": 6
+    },
+    {
+      "column": "season",
+      "loaded_dtype": "string",
+      "role": "categorical_predictor",
+      "development_train_missing": 0,
+      "observed_categories": [
+        "autumn",
+        "monsoon",
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "category_count": 5
+    },
+    {
+      "column": "air_humidity_pct",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        25.0,
+        93.9
+      ]
+    },
+    {
+      "column": "soil_humidity_pct",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        8.1,
+        90.0
+      ]
+    },
+    {
+      "column": "ethylene_ppm",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        0.001,
+        2.496
+      ]
+    },
+    {
+      "column": "co2_ppm",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        330.5,
+        1249.7
+      ]
+    },
+    {
+      "column": "o2_ppm",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        18.2,
+        21.5
+      ]
+    },
+    {
+      "column": "ldr_on_plant",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        30.0,
+        1023.0
+      ]
+    },
+    {
+      "column": "leaf_color_index",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        20.1,
+        100.0
+      ]
+    },
+    {
+      "column": "temperature_c",
+      "loaded_dtype": "float64",
+      "role": "numeric_predictor",
+      "development_train_missing": 0,
+      "observed_range": [
+        8.0,
+        38.0
+      ]
+    },
+    {
+      "column": "health_score",
+      "loaded_dtype": "float64",
+      "role": "excluded",
+      "development_train_missing": 0
+    },
+    {
+      "column": "health_class",
+      "loaded_dtype": "string",
+      "role": "excluded",
+      "development_train_missing": 0
+    }
+  ],
+  "test_access": "schema, row counts, IDs and exact predictor-overlap checks only; no label/score summaries or feature distributions"
+}
