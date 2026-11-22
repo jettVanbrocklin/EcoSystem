@@ -1,0 +1,159 @@
+{
+  "status": "preprocessing_verified; no project classifier fitted",
+  "fit_partition": "development_train",
+  "fit_rows": 1600,
+  "transform_only_partition": "validation",
+  "transform_only_rows": 400,
+  "training_shape": [
+    1600,
+    27
+  ],
+  "validation_shape": [
+    400,
+    27
+  ],
+  "dataset_revision": "d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2",
+  "source_sha256": {
+    "train.csv": "15bd6bc0fccf0a9db831b263e2a884dfb62227dad22ba54d3cd16ccaf31c2964",
+    "test.csv": "07cf4d6a665aeed2796fe71524593b8074c0248d21b1d9bc41240b94c531f57d"
+  },
+  "membership_sha256": "27ae396b2ad841cf89ee153e6b61609064efc5acd7f8916114505cb9fa88490e",
+  "environment_metadata": "reports/environment.json",
+  "feature_names": [
+    "numeric__air_humidity_pct",
+    "numeric__soil_humidity_pct",
+    "numeric__ethylene_ppm",
+    "numeric__co2_ppm",
+    "numeric__o2_ppm",
+    "numeric__ldr_on_plant",
+    "numeric__leaf_color_index",
+    "numeric__temperature_c",
+    "categorical__plant_type_aloe_vera",
+    "categorical__plant_type_basil",
+    "categorical__plant_type_lettuce",
+    "categorical__plant_type_mint",
+    "categorical__plant_type_pothos",
+    "categorical__plant_type_rose",
+    "categorical__plant_type_snake_plant",
+    "categorical__plant_type_tomato",
+    "categorical__habitat_arid_garden",
+    "categorical__habitat_garden",
+    "categorical__habitat_greenhouse",
+    "categorical__habitat_hydroponic",
+    "categorical__habitat_indoor",
+    "categorical__habitat_shade_house",
+    "categorical__season_autumn",
+    "categorical__season_monsoon",
+    "categorical__season_spring",
+    "categorical__season_summer",
+    "categorical__season_winter"
+  ],
+  "input_features": [
+    "air_humidity_pct",
+    "soil_humidity_pct",
+    "ethylene_ppm",
+    "co2_ppm",
+    "o2_ppm",
+    "ldr_on_plant",
+    "leaf_color_index",
+    "temperature_c",
+    "plant_type",
+    "habitat",
+    "season"
+  ],
+  "probability_classes": [
+    "healthy",
+    "moderate_stress",
+    "high_stress"
+  ],
+  "class_to_probability_column": {
+    "healthy": 0,
+    "moderate_stress": 1,
+    "high_stress": 2
+  },
+  "state": {
+    "numeric_medians": [
+      58.7,
+      48.599999999999994,
+      1.2225000000000001,
+      794.1,
+      19.83,
+      512.5,
+      60.7,
+      22.9
+    ],
+    "numeric_mean": [
+      59.288999999999994,
+      48.9731875,
+      1.2373625,
+      793.5975,
+      19.869600000000002,
+      518.1575,
+      59.951875,
+      22.683249999999997
+    ],
+    "numeric_scale": [
+      19.951709613464207,
+      23.410403399767457,
+      0.7058332264733292,
+      266.9826829707313,
+      0.9611440916948926,
+      291.4097483677408,
+      23.1797038696437,
+      8.652266000158571
+    ],
+    "numeric_variance": [
+      398.0707165,
+      548.0469873398438,
+      0.49820054359375004,
+      71279.75300625,
+      0.923797965,
+      84919.64144375,
+      537.2986714843751,
+      74.8617069375
+    ],
+    "categorical_modes": [
+      "pothos",
+      "greenhouse",
+      "summer"
+    ],
+    "categories": [
+      [
+        "aloe_vera",
+        "basil",
+        "lettuce",
+        "mint",
+        "pothos",
+        "rose",
+        "snake_plant",
+        "tomato"
+      ],
+      [
+        "arid_garden",
+        "garden",
+        "greenhouse",
+        "hydroponic",
+        "indoor",
+        "shade_house"
+      ],
+      [
+        "autumn",
+        "monsoon",
+        "spring",
+        "summer",
+        "winter"
+      ]
+    ]
+  },
+  "checks": {
+    "validation_did_not_refit": true,
+    "new_row": true,
+    "missing_values": true,
+    "unseen_categories": true,
+    "finite_consistent_width": true,
+    "excluded_fields_absent": true,
+    "serialization_roundtrip": true
+  },
+  "artifact": "models/development_preprocessor.joblib",
+  "note": "Intermediate development preprocessor only; future CV must fit the complete model pipeline inside each fold."
+}

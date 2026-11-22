@@ -67,14 +67,14 @@ The default path is a CPU-based project on your own computer: local data files, 
 
 ## 6. Build one reusable preprocessing pipeline
 
-- [ ] Implement `src/pipeline.py` with a scikit-learn `ColumnTransformer` inside a `Pipeline`.
-- [ ] For numeric features, fit median imputation and standardization on development-train only.
-- [ ] For categorical features, fit most-frequent imputation and one-hot encoding with unknown categories ignored on development-train only.
-- [ ] Preserve transformed feature names and a fixed class-to-probability-column mapping.
-- [ ] Apply the fitted transformation to validation without refitting. When using cross-validation later, pass the entire pipeline into the search so each fold fits its own preprocessing.
-- [ ] Verify missing values, an unseen category, and one valid new row pass through the pipeline. Verify predictor columns never include either label or the record ID.
+- [x] Implement [src/pipeline.py](./src/pipeline.py) with an allowlist selector and a scikit-learn `ColumnTransformer` inside a reusable `Pipeline`; provide a builder that appends a cloned classifier.
+- [x] Fit median imputation and standardization of all eight numeric predictors using only the 1,600 development-training records.
+- [x] Fit most-frequent categorical imputation and one-hot encoding with unknown categories ignored using development-train only.
+- [x] Preserve all 27 transformed names and define the fixed probability-column order healthy/moderate stress/high stress. Provide an explicit reorder helper and verify it with unequal synthetic class probabilities.
+- [x] Transform 400 validation records without refitting; verify fitted imputer/scaler/category state is unchanged. Verify whole-pipeline fold-specific fitting in cross-validation tests; do not reuse the saved development preprocessor across folds.
+- [x] Verify missing values, unseen categories, a valid new row, empty training columns, input errors, label/ID exclusion, and serialization/reloading. Save [the verification summary](./reports/preprocessing_summary.json) and [intermediate preprocessor](./models/development_preprocessor.joblib).
 
-**Output:** a reusable preprocessing object with focused leakage and input checks. Standardization supports the conditioning and optimization lessons from [Assignment 2, Q1–Q3 and Q11](./Assigments/assignment_2_1.py).
+**Output completed:** [reusable preprocessing](./src/pipeline.py), [documented input/output contract](./reports/PREPROCESSING.md), and an executed notebook verification. All 19 tests and fresh-kernel execution pass; no project classifier is trained and test data was not loaded for this step. Next: Step 7, model comparison. Standardization supports the conditioning and optimization lessons from [Assignment 2, Q1–Q3 and Q11](./Assigments/assignment_2_1.py).
 
 ## 7. Train the minimum useful model comparison
 

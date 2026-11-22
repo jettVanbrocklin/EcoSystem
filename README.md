@@ -1,6 +1,6 @@
 ## Verified local setup
 
-Steps 1–5 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for local reproduction commands and [the data-audit notebook](./notebooks/01_data_audit.ipynb) for executed analysis. [Data boundaries](./reports/DATA_BOUNDARIES.md) define allowed inputs and the 1,600/400/500 development-training/validation/test partitions. [The EDA report](./reports/EDA_REPORT.md) explores development-train only, including class imbalance and excluded-score leakage. No preprocessing or model fitting has occurred.
+Steps 1–6 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for reproduction commands and [the data-audit notebook](./notebooks/01_data_audit.ipynb) for executed analysis. [Data boundaries](./reports/DATA_BOUNDARIES.md) define allowed inputs and the 1,600/400/500 development-training/validation/test partitions. [The EDA report](./reports/EDA_REPORT.md) explores development-train only. [Reusable preprocessing](./reports/PREPROCESSING.md) is fitted on development-train and verified on validation without refitting; no project classifier has been trained.
 
 The project description template below is retained for completion as the dataset and implementation are verified.
 

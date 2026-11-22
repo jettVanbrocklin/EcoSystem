@@ -119,3 +119,13 @@ There are no missing/nonfinite sensor values, documented-bound violations, or ov
 The excluded `health_score` occupies nonoverlapping observed ranges: high stress 0–54, moderate stress 55–79, and healthy 80–100. Thresholds at 55 and 80 reproduce every development-training label; no observed score belongs to multiple classes. This is post-hoc evidence of synthetic label-generation leakage, not an independently evaluated model. The score remains excluded from all predictor lists.
 
 The notebook embeds all nine figures with interpretations, and [local instructions](../LOCAL_SETUP.md) document report/figure regeneration. Raw files and saved membership are unchanged. No model or preprocessing has been fitted; next is Step 6, the reusable preprocessing pipeline.
+
+## Reusable preprocessing — Step 6
+
+Step 6 is complete in [the preprocessing report](./PREPROCESSING.md), [verification summary](./preprocessing_summary.json), and [pipeline module](../src/pipeline.py). A named-column allowlist drops labels, IDs, and extra fields before a `ColumnTransformer` fits median imputation/standardization on numeric features and most-frequent imputation/one-hot encoding on categorical features.
+
+The preprocessor was fitted using 1,600 development-training records and transformed 400 validation records into the same 27 named columns without refitting. Learned imputer/scaler/category state remained unchanged through validation and smoke checks. Missing values, entirely missing training columns, unseen categories, a valid new row, and serialization/reloading were verified. No project classifier has been trained; validation data has only been transformed, and test records were not loaded for this step.
+
+The project probability order is explicitly healthy, moderate stress, high stress. A helper verifies and reorders fitted classifiers' actual probability columns rather than assuming estimator order. Tests use synthetic classifiers only to verify that contract and fold-specific preprocessing. All 19 tests pass, and the notebook executes from a fresh kernel.
+
+[The saved preprocessor](../models/development_preprocessor.joblib) is an intermediate development artifact. Future cross-validation must fit a fresh **complete preprocessing-plus-classifier pipeline** inside each fold. Next: train the baseline/logistic-regression/tree comparison in Step 7.

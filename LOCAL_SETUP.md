@@ -28,7 +28,7 @@ Choose **EcoSystem (local CPU)**. The kernel registration is local and ignored b
 & ../.venv/Scripts/python.exe -m ipykernel install --prefix .jupyter --name ecosystem-local --display-name 'EcoSystem (local CPU)'
 ```
 
-The first notebook verifies setup, snapshot provenance, and saved development boundaries, then explores development-train only. It embeds nine figures with interpretations and regenerates the EDA report/summary. To verify it from a fresh kernel and regenerate saved outputs and environment metadata:
+The first notebook verifies setup, snapshot provenance, and saved development boundaries, explores development-train only, and verifies training-fitted preprocessing against validation inputs. It embeds nine figures with interpretations and regenerates EDA/preprocessing summaries. To verify it from a fresh kernel and regenerate saved outputs and environment metadata:
 
 ```powershell
 $env:JUPYTER_PATH = (Join-Path $PWD '.jupyter/share/jupyter')
@@ -83,6 +83,17 @@ After acquiring the raw snapshot and generating saved memberships, run:
 [The EDA module](./src/eda.py) loads only `development_train` and writes [EDA_REPORT.md](./reports/EDA_REPORT.md), [eda_summary.json](./reports/eda_summary.json), and nine plots under [reports/figures/](./reports/figures/). It does not summarize validation/test rows or fit transformations/models. The report covers class balance, sensor/context distributions, missingness, correlations, documented bounds/IQR flags, and excluded-score leakage evidence. The [audit notebook](./notebooks/01_data_audit.ipynb) reruns the analysis and embeds plots with interpretations so they remain visible without the ignored PNGs.
 
 All 1,600 development-training records were retained with no corrections, conversions, or imputations. The majority-class accuracy is a descriptive development-training reference; held-out baseline metrics remain Step 7. Score thresholds describe observed synthetic label generation and must never be used as score-derived predictor features. Re-running the EDA command updates generated reports/plots without changing raw data or saved memberships.
+
+## Verify the reusable preprocessing pipeline
+
+```powershell
+& ../.venv/Scripts/python.exe -m src.pipeline
+& ../.venv/Scripts/python.exe -m unittest discover -s tests -v
+```
+
+[The pipeline module](./src/pipeline.py) provides `build_preprocessing_pipeline()` and `build_model_pipeline(classifier)`. The allowlist drops extra fields before median imputation/standardization of numeric features and most-frequent imputation/one-hot encoding of categorical features. Unknown categories are ignored. [The preprocessing report](./reports/PREPROCESSING.md) documents the input contract, 27 named outputs, fixed probability-column order, and validation checks.
+
+The verification command fits only on development-train, transforms validation without refitting, checks missing/unseen inputs, and saves [the intermediate preprocessor](./models/development_preprocessor.joblib) plus [a shareable metadata summary](./reports/preprocessing_summary.json). No project classifier is trained. Regenerate this artifact from raw data and saved memberships with the command above. For future model search, pass the complete fresh model pipeline into cross-validation; do not reuse this fitted intermediate preprocessor across folds. Use `predict_class_probabilities` to align a fitted model's probability columns to the documented project order.
 
 ## Reproducibility and local outputs
 
