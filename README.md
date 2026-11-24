@@ -1,6 +1,6 @@
 ## Verified local setup
 
-Steps 1–6 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for reproduction commands and [the data-audit notebook](./notebooks/01_data_audit.ipynb) for executed analysis. [Data boundaries](./reports/DATA_BOUNDARIES.md) define allowed inputs and the 1,600/400/500 development-training/validation/test partitions. [The EDA report](./reports/EDA_REPORT.md) explores development-train only. [Reusable preprocessing](./reports/PREPROCESSING.md) is fitted on development-train and verified on validation without refitting; no project classifier has been trained.
+Steps 1–7 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for reproduction commands, [the audit notebook](./notebooks/01_data_audit.ipynb) for data/preprocessing checks, and [the comparison notebook](./notebooks/02_model_comparison.ipynb) for fitted baselines, logistic regression, and a shallow tree. [Initial validation results](./reports/MODEL_COMPARISON.md) favor logistic regression on macro F1 (0.5327), while the tree has higher accuracy (0.6350) but misses the healthy class. No tuning, final selection, or test evaluation has occurred.
 
 The project description template below is retained for completion as the dataset and implementation are verified.
 

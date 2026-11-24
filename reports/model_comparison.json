@@ -1,0 +1,695 @@
+{
+  "status": "initial_fixed_setting_comparison; no tuning or final model selection",
+  "captured_at_utc": "2026-11-22T02:38:13.559390+00:00",
+  "fit_partition": "development_train",
+  "fit_rows": 1600,
+  "evaluation_partition": "validation",
+  "evaluation_rows": 400,
+  "test_table_loaded": false,
+  "seed": 42,
+  "dataset_revision": "d7b9f23bce2f5cf02c3be85c38506cf386d9d0b2",
+  "source_sha256": {
+    "train.csv": "15bd6bc0fccf0a9db831b263e2a884dfb62227dad22ba54d3cd16ccaf31c2964",
+    "test.csv": "07cf4d6a665aeed2796fe71524593b8074c0248d21b1d9bc41240b94c531f57d"
+  },
+  "membership_sha256": "27ae396b2ad841cf89ee153e6b61609064efc5acd7f8916114505cb9fa88490e",
+  "package_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "class_order": [
+    "healthy",
+    "moderate_stress",
+    "high_stress"
+  ],
+  "primary_metric": "macro_f1",
+  "models": {
+    "majority": {
+      "estimator": "DummyClassifier",
+      "parameters": {
+        "constant": null,
+        "random_state": 42,
+        "strategy": "most_frequent"
+      },
+      "fit_seconds": 0.06190589998732321,
+      "fit_warnings": [],
+      "diagnostics": {
+        "fitted_class_priors_estimator_order": [
+          0.12,
+          0.415625,
+          0.464375
+        ]
+      },
+      "estimator_class_order": [
+        "healthy",
+        "high_stress",
+        "moderate_stress"
+      ],
+      "feature_names": [
+        "numeric__air_humidity_pct",
+        "numeric__soil_humidity_pct",
+        "numeric__ethylene_ppm",
+        "numeric__co2_ppm",
+        "numeric__o2_ppm",
+        "numeric__ldr_on_plant",
+        "numeric__leaf_color_index",
+        "numeric__temperature_c",
+        "categorical__plant_type_aloe_vera",
+        "categorical__plant_type_basil",
+        "categorical__plant_type_lettuce",
+        "categorical__plant_type_mint",
+        "categorical__plant_type_pothos",
+        "categorical__plant_type_rose",
+        "categorical__plant_type_snake_plant",
+        "categorical__plant_type_tomato",
+        "categorical__habitat_arid_garden",
+        "categorical__habitat_garden",
+        "categorical__habitat_greenhouse",
+        "categorical__habitat_hydroponic",
+        "categorical__habitat_indoor",
+        "categorical__habitat_shade_house",
+        "categorical__season_autumn",
+        "categorical__season_monsoon",
+        "categorical__season_spring",
+        "categorical__season_summer",
+        "categorical__season_winter"
+      ],
+      "metrics": {
+        "train": {
+          "accuracy": 0.464375,
+          "macro_f1": 0.21140987338170436,
+          "balanced_accuracy": 0.3333333333333333,
+          "log_loss": 19.305881846545873,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 857,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 192
+            },
+            "moderate_stress": {
+              "precision": 0.464375,
+              "recall": 1.0,
+              "f1": 0.6342296201451131,
+              "support": 743
+            },
+            "high_stress": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 665
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              192,
+              0
+            ],
+            [
+              0,
+              743,
+              0
+            ],
+            [
+              0,
+              665,
+              0
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        },
+        "validation": {
+          "accuracy": 0.465,
+          "macro_f1": 0.21160409556313994,
+          "balanced_accuracy": 0.3333333333333333,
+          "log_loss": 19.28335456317767,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 214,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 48
+            },
+            "moderate_stress": {
+              "precision": 0.465,
+              "recall": 1.0,
+              "f1": 0.6348122866894198,
+              "support": 186
+            },
+            "high_stress": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 166
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              48,
+              0
+            ],
+            [
+              0,
+              186,
+              0
+            ],
+            [
+              0,
+              166,
+              0
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        }
+      },
+      "preprocessing_unchanged_during_evaluation": true,
+      "artifact": "models/development_majority.joblib",
+      "serialization_verified": true
+    },
+    "prior_probability": {
+      "estimator": "DummyClassifier",
+      "parameters": {
+        "constant": null,
+        "random_state": 42,
+        "strategy": "prior"
+      },
+      "fit_seconds": 0.015206100011710078,
+      "fit_warnings": [],
+      "diagnostics": {
+        "fitted_class_priors_estimator_order": [
+          0.12,
+          0.415625,
+          0.464375
+        ]
+      },
+      "estimator_class_order": [
+        "healthy",
+        "high_stress",
+        "moderate_stress"
+      ],
+      "feature_names": [
+        "numeric__air_humidity_pct",
+        "numeric__soil_humidity_pct",
+        "numeric__ethylene_ppm",
+        "numeric__co2_ppm",
+        "numeric__o2_ppm",
+        "numeric__ldr_on_plant",
+        "numeric__leaf_color_index",
+        "numeric__temperature_c",
+        "categorical__plant_type_aloe_vera",
+        "categorical__plant_type_basil",
+        "categorical__plant_type_lettuce",
+        "categorical__plant_type_mint",
+        "categorical__plant_type_pothos",
+        "categorical__plant_type_rose",
+        "categorical__plant_type_snake_plant",
+        "categorical__plant_type_tomato",
+        "categorical__habitat_arid_garden",
+        "categorical__habitat_garden",
+        "categorical__habitat_greenhouse",
+        "categorical__habitat_hydroponic",
+        "categorical__habitat_indoor",
+        "categorical__habitat_shade_house",
+        "categorical__season_autumn",
+        "categorical__season_monsoon",
+        "categorical__season_spring",
+        "categorical__season_summer",
+        "categorical__season_winter"
+      ],
+      "metrics": {
+        "train": {
+          "accuracy": 0.464375,
+          "macro_f1": 0.21140987338170436,
+          "balanced_accuracy": 0.3333333333333333,
+          "log_loss": 0.9755434990461401,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 0,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 192
+            },
+            "moderate_stress": {
+              "precision": 0.464375,
+              "recall": 1.0,
+              "f1": 0.6342296201451131,
+              "support": 743
+            },
+            "high_stress": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 665
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              192,
+              0
+            ],
+            [
+              0,
+              743,
+              0
+            ],
+            [
+              0,
+              665,
+              0
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        },
+        "validation": {
+          "accuracy": 0.465,
+          "macro_f1": 0.21160409556313994,
+          "balanced_accuracy": 0.3333333333333333,
+          "log_loss": 0.9754741809186015,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 0,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 48
+            },
+            "moderate_stress": {
+              "precision": 0.465,
+              "recall": 1.0,
+              "f1": 0.6348122866894198,
+              "support": 186
+            },
+            "high_stress": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 166
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              48,
+              0
+            ],
+            [
+              0,
+              186,
+              0
+            ],
+            [
+              0,
+              166,
+              0
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        }
+      },
+      "preprocessing_unchanged_during_evaluation": true,
+      "artifact": "models/development_prior_probability.joblib",
+      "serialization_verified": true
+    },
+    "logistic_regression": {
+      "estimator": "LogisticRegression",
+      "parameters": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 1000,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "fit_seconds": 0.03495359999942593,
+      "fit_warnings": [],
+      "diagnostics": {
+        "iterations": [
+          42
+        ]
+      },
+      "estimator_class_order": [
+        "healthy",
+        "high_stress",
+        "moderate_stress"
+      ],
+      "feature_names": [
+        "numeric__air_humidity_pct",
+        "numeric__soil_humidity_pct",
+        "numeric__ethylene_ppm",
+        "numeric__co2_ppm",
+        "numeric__o2_ppm",
+        "numeric__ldr_on_plant",
+        "numeric__leaf_color_index",
+        "numeric__temperature_c",
+        "categorical__plant_type_aloe_vera",
+        "categorical__plant_type_basil",
+        "categorical__plant_type_lettuce",
+        "categorical__plant_type_mint",
+        "categorical__plant_type_pothos",
+        "categorical__plant_type_rose",
+        "categorical__plant_type_snake_plant",
+        "categorical__plant_type_tomato",
+        "categorical__habitat_arid_garden",
+        "categorical__habitat_garden",
+        "categorical__habitat_greenhouse",
+        "categorical__habitat_hydroponic",
+        "categorical__habitat_indoor",
+        "categorical__habitat_shade_house",
+        "categorical__season_autumn",
+        "categorical__season_monsoon",
+        "categorical__season_spring",
+        "categorical__season_summer",
+        "categorical__season_winter"
+      ],
+      "metrics": {
+        "train": {
+          "accuracy": 0.615,
+          "macro_f1": 0.5470730142632564,
+          "balanced_accuracy": 0.528875737740493,
+          "log_loss": 0.7875122567132472,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 0,
+          "per_class": {
+            "healthy": {
+              "precision": 0.5747126436781609,
+              "recall": 0.2604166666666667,
+              "f1": 0.35842293906810035,
+              "support": 192
+            },
+            "moderate_stress": {
+              "precision": 0.5807962529274004,
+              "recall": 0.6675639300134589,
+              "f1": 0.6211646837820914,
+              "support": 743
+            },
+            "high_stress": {
+              "precision": 0.6646433990895296,
+              "recall": 0.6586466165413534,
+              "f1": 0.6616314199395771,
+              "support": 665
+            }
+          },
+          "confusion_matrix": [
+            [
+              50,
+              135,
+              7
+            ],
+            [
+              33,
+              496,
+              214
+            ],
+            [
+              4,
+              223,
+              438
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        },
+        "validation": {
+          "accuracy": 0.6,
+          "macro_f1": 0.5327054794146239,
+          "balanced_accuracy": 0.515038649220538,
+          "log_loss": 0.8176739820272525,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 0,
+          "per_class": {
+            "healthy": {
+              "precision": 0.5714285714285714,
+              "recall": 0.25,
+              "f1": 0.34782608695652173,
+              "support": 48
+            },
+            "moderate_stress": {
+              "precision": 0.5734597156398105,
+              "recall": 0.6505376344086021,
+              "f1": 0.6095717884130982,
+              "support": 186
+            },
+            "high_stress": {
+              "precision": 0.6369047619047619,
+              "recall": 0.6445783132530121,
+              "f1": 0.6407185628742516,
+              "support": 166
+            }
+          },
+          "confusion_matrix": [
+            [
+              12,
+              34,
+              2
+            ],
+            [
+              6,
+              121,
+              59
+            ],
+            [
+              3,
+              56,
+              107
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        }
+      },
+      "preprocessing_unchanged_during_evaluation": true,
+      "artifact": "models/development_logistic_regression.joblib",
+      "serialization_verified": true
+    },
+    "shallow_tree": {
+      "estimator": "DecisionTreeClassifier",
+      "parameters": {
+        "ccp_alpha": 0.0,
+        "class_weight": null,
+        "criterion": "gini",
+        "max_depth": 4,
+        "max_features": null,
+        "max_leaf_nodes": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 5,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "random_state": 42,
+        "splitter": "best"
+      },
+      "fit_seconds": 0.018216700002085418,
+      "fit_warnings": [],
+      "diagnostics": {
+        "actual_depth": 4,
+        "leaves": 16
+      },
+      "estimator_class_order": [
+        "healthy",
+        "high_stress",
+        "moderate_stress"
+      ],
+      "feature_names": [
+        "numeric__air_humidity_pct",
+        "numeric__soil_humidity_pct",
+        "numeric__ethylene_ppm",
+        "numeric__co2_ppm",
+        "numeric__o2_ppm",
+        "numeric__ldr_on_plant",
+        "numeric__leaf_color_index",
+        "numeric__temperature_c",
+        "categorical__plant_type_aloe_vera",
+        "categorical__plant_type_basil",
+        "categorical__plant_type_lettuce",
+        "categorical__plant_type_mint",
+        "categorical__plant_type_pothos",
+        "categorical__plant_type_rose",
+        "categorical__plant_type_snake_plant",
+        "categorical__plant_type_tomato",
+        "categorical__habitat_arid_garden",
+        "categorical__habitat_garden",
+        "categorical__habitat_greenhouse",
+        "categorical__habitat_hydroponic",
+        "categorical__habitat_indoor",
+        "categorical__habitat_shade_house",
+        "categorical__season_autumn",
+        "categorical__season_monsoon",
+        "categorical__season_spring",
+        "categorical__season_summer",
+        "categorical__season_winter"
+      ],
+      "metrics": {
+        "train": {
+          "accuracy": 0.66375,
+          "macro_f1": 0.4694168492451754,
+          "balanced_accuracy": 0.4973901780022061,
+          "log_loss": 0.7185189585514586,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 0,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 192
+            },
+            "moderate_stress": {
+              "precision": 0.592328278322926,
+              "recall": 0.8936742934051144,
+              "f1": 0.7124463519313304,
+              "support": 743
+            },
+            "high_stress": {
+              "precision": 0.8308977035490606,
+              "recall": 0.5984962406015037,
+              "f1": 0.6958041958041958,
+              "support": 665
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              190,
+              2
+            ],
+            [
+              0,
+              664,
+              79
+            ],
+            [
+              0,
+              267,
+              398
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        },
+        "validation": {
+          "accuracy": 0.635,
+          "macro_f1": 0.44958116010747595,
+          "balanced_accuracy": 0.47657295850066933,
+          "log_loss": 0.8645625275373362,
+          "log_loss_clip_epsilon": 2.220446049250313e-16,
+          "zero_probability_true_labels": 1,
+          "per_class": {
+            "healthy": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 48
+            },
+            "moderate_stress": {
+              "precision": 0.5740740740740741,
+              "recall": 0.8333333333333334,
+              "f1": 0.6798245614035088,
+              "support": 186
+            },
+            "high_stress": {
+              "precision": 0.7615384615384615,
+              "recall": 0.5963855421686747,
+              "f1": 0.668918918918919,
+              "support": 166
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              48,
+              0
+            ],
+            [
+              0,
+              155,
+              31
+            ],
+            [
+              0,
+              67,
+              99
+            ]
+          ],
+          "class_order": [
+            "healthy",
+            "moderate_stress",
+            "high_stress"
+          ]
+        }
+      },
+      "preprocessing_unchanged_during_evaluation": true,
+      "artifact": "models/development_shallow_tree.joblib",
+      "serialization_verified": true
+    }
+  },
+  "predictions": "data/processed/model_comparison_validation_predictions.csv",
+  "notes": [
+    "All candidates fit fresh full preprocessing/classifier pipelines on development-train only.",
+    "Hard predictions use estimator.predict; probabilities are explicitly reordered to project class order.",
+    "Log loss uses integer-encoded targets aligned to project probability order; zero probabilities use float64 epsilon clipping.",
+    "Fit times include preprocessing, are single-run wall times, and are not a rigorous speed benchmark.",
+    "Validation is development evidence; the reserved test set remains for final evaluation after selection."
+  ],
+  "figures": [
+    {
+      "file": "figures/model_comparison_metrics.png",
+      "title": "Training and validation metrics",
+      "interpretation": "The train/validation gaps are a first check of generalization, not proof of it. Accuracy can hide poor healthy-class recall; compare macro F1 and the per-class results before judging the candidates."
+    },
+    {
+      "file": "figures/model_comparison_confusions.png",
+      "title": "Validation confusion matrices",
+      "interpretation": "Both dummy baselines predict only the majority class and miss every healthy/high-stress record. The logistic and tree matrices expose which class confusions remain; all panels use the same class order and color scale."
+    },
+    {
+      "file": "figures/model_comparison_recall.png",
+      "title": "Per-class recall",
+      "interpretation": "Recall measures the fraction of each true class recovered. The minority healthy class must be assessed separately from aggregate accuracy; these estimates come from one 400-record validation partition and are not final test results."
+    }
+  ]
+}

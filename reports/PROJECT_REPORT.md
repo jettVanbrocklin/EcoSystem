@@ -129,3 +129,22 @@ The preprocessor was fitted using 1,600 development-training records and transfo
 The project probability order is explicitly healthy, moderate stress, high stress. A helper verifies and reorders fitted classifiers' actual probability columns rather than assuming estimator order. Tests use synthetic classifiers only to verify that contract and fold-specific preprocessing. All 19 tests pass, and the notebook executes from a fresh kernel.
 
 [The saved preprocessor](../models/development_preprocessor.joblib) is an intermediate development artifact. Future cross-validation must fit a fresh **complete preprocessing-plus-classifier pipeline** inside each fold. Next: train the baseline/logistic-regression/tree comparison in Step 7.
+
+## Initial model comparison — Step 7
+
+Step 7 is complete in [the model-comparison notebook](../notebooks/02_model_comparison.ipynb), [report](./MODEL_COMPARISON.md), [CSV table](./model_comparison.csv), and [full result metadata](./model_comparison.json). Each fixed candidate fitted a fresh complete preprocessing/classifier pipeline on the same 1,600 development-training records and was evaluated on the same 400 validation records. The test table was not loaded; no tuning or validation-driven setting changes occurred.
+
+| Candidate | Validation accuracy | Validation macro F1 | Validation log loss | Healthy recall |
+| --- | ---: | ---: | ---: | ---: |
+| Hard majority | 0.4650 | 0.2116 | 19.2834 | 0.0000 |
+| Prior probability | 0.4650 | 0.2116 | 0.9755 | 0.0000 |
+| Logistic regression | 0.6000 | 0.5327 | 0.8177 | 0.2500 |
+| Depth-4 tree | 0.6350 | 0.4496 | 0.8646 | 0.0000 |
+
+Logistic regression used L-BFGS, L2 regularization with C=1 and l1_ratio=0, tolerance 1e-4, and maximum 1000 iterations; it converged in 42 iterations. The tree used Gini splits, maximum depth 4, and minimum 5 rows per leaf, producing 16 leaves. All candidates used seed 42 and emitted no fitting warnings. Fit timing and full parameter dictionaries are recorded in the result files.
+
+Logistic regression leads on the predeclared primary metric, macro F1. The tree's higher accuracy masks its failure to identify any of the 48 healthy validation records; logistic regression recovers 12. The accuracy gaps between training and validation are 0.0150 for logistic regression and 0.02875 for the tree; macro-F1 gaps are about 0.0144 and 0.0198. These modest gaps do not show severe training memorization, but restricted boundaries and class imbalance leave substantial error. One validation split cannot establish stable superiority.
+
+The hard-majority log loss reflects zero true-class probabilities clipped to float64 epsilon. The prior dummy supplies a more useful constant-probability reference. Metrics use an explicit class order, with matching numeric target codes for log loss, zero_division=0 for undefined precision/F1, and all three classes in every confusion matrix. Per-class precision, recall, F1, and support are saved alongside aggregate metrics.
+
+All four saved development pipelines reproduce validation probabilities after reload, and evaluation leaves fitted preprocessing state unchanged. Three interpreted comparison figures are embedded in the notebook. All 23 tests and fresh-kernel notebook execution pass. These models remain development candidates on synthetic data; final selection/refitting and untouched-test evaluation are still pending. Next: Step 8, the class-math explanation.

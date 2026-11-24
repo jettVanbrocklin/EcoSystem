@@ -78,14 +78,14 @@ The default path is a CPU-based project on your own computer: local data files, 
 
 ## 7. Train the minimum useful model comparison
 
-- [ ] Start `notebooks/02_model_comparison.ipynb`, importing reusable functions from `src/`.
-- [ ] Fit a majority-class `DummyClassifier` and record validation accuracy, macro F1, per-class recall, and a confusion matrix. If recording its log loss, note that hard majority probabilities assign zero probability to other classes; a prior-probability dummy is a useful separate reference for log loss.
-- [ ] Fit regularized multinomial logistic regression with a suitable multiclass solver, such as L-BFGS. Record convergence warnings, iteration count, regularization, and validation results.
-- [ ] Fit a shallow decision tree as the required nonlinear comparison. Start with a bounded depth rather than an unrestricted tree.
-- [ ] Record each candidate's model class, objective, and fitting method. For the tree, describe greedy splits based on an impurity criterion; it does not optimize logistic regression's cross-entropy objective.
-- [ ] Save a comparison table with training/validation metrics, fit time, and model settings. Investigate whether a large training/validation gap indicates overfitting.
+- [x] Create and execute [02_model_comparison.ipynb](./notebooks/02_model_comparison.ipynb), importing shared comparison, evaluation, pipeline, and split utilities.
+- [x] Fit hard-majority and prior-probability dummy baselines. Both have validation accuracy 0.4650 and macro F1 0.2116; preserve per-class results/confusions and explain zero-probability clipping versus the prior baseline's log loss.
+- [x] Fit L2 multinomial logistic regression with L-BFGS, C=1, l1_ratio=0, tolerance 1e-4, and max_iter=1000. It converges in 42 iterations without warnings; validation accuracy is 0.6000 and macro F1 is 0.5327.
+- [x] Fit the nonlinear comparison with a depth-4 Gini decision tree, minimum 5 rows per leaf, and seed 42. Validation accuracy is 0.6350 and macro F1 is 0.4496; healthy-class recall is zero.
+- [x] Document model classes, objectives, fitting methods, and assumptions in [MODEL_COMPARISON.md](./reports/MODEL_COMPARISON.md). The tree greedily reduces Gini impurity rather than optimizing logistic regression's objective.
+- [x] Save [the comparison table](./reports/model_comparison.csv), [full metrics/settings/diagnostics](./reports/model_comparison.json), local candidate pipelines, validation predictions, and three interpreted plots. Analyze modest train/validation gaps and poor minority recall; do not tune or declare a final selected model.
 
-**Output:** baseline, logistic regression, and one nonlinear model running locally. Course connections: lecture Sections 8.3–8.5; [Assignment 3, Q1 and Q10–Q12](./Assigments/assignment_3_3.py). The tree is a practical comparison beyond the methods developed in the supplied assignments.
+**Output completed:** four fixed development candidates (including the probability-prior reference), [executed comparison notebook](./notebooks/02_model_comparison.ipynb), and [results report](./reports/MODEL_COMPARISON.md). All 23 tests and fresh-kernel execution pass; offline/scope checks confirm no raw test-table loading and unchanged source/membership hashes. Logistic regression leads initial macro F1, but tuning/selection remains Step 9. Next: Step 8, the math connection. Course connections: lecture Sections 8.3–8.5; [Assignment 3, Q1 and Q10–Q12](./Assigments/assignment_3_3.py). The tree is a practical nonlinear comparison beyond the supplied derivations.
 
 ## 8. Connect the classifier to the class math
 
