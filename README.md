@@ -1,6 +1,6 @@
 ## Verified local setup
 
-Steps 1–7 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for reproduction commands, [the audit notebook](./notebooks/01_data_audit.ipynb) for data/preprocessing checks, and [the comparison notebook](./notebooks/02_model_comparison.ipynb) for fitted baselines, logistic regression, and a shallow tree. [Initial validation results](./reports/MODEL_COMPARISON.md) favor logistic regression on macro F1 (0.5327), while the tree has higher accuracy (0.6350) but misses the healthy class. No tuning, final selection, or test evaluation has occurred.
+Steps 1–8 are documented in the [project report](./reports/PROJECT_REPORT.md) and [progress checklist](./ATTACK_PLAN.md). See [LOCAL_SETUP.md](./LOCAL_SETUP.md) for reproduction commands, [the audit notebook](./notebooks/01_data_audit.ipynb) for data/preprocessing checks, and [the comparison notebook](./notebooks/02_model_comparison.ipynb) for fitted candidates. [Initial validation results](./reports/MODEL_COMPARISON.md) favor logistic regression on macro F1 (0.5327). [The math explanation](./reports/SOFTMAX_MATH.md) and [NumPy verification notebook](./notebooks/02b_softmax_math.ipynb) derive and numerically check the classifier. No hyperparameter search, final selection, or test evaluation has occurred.
 
 The project description template below is retained for completion as the dataset and implementation are verified.
 

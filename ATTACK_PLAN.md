@@ -91,15 +91,15 @@ The default path is a CPU-based project on your own computer: local data files, 
 
 Complete the explanation first. The implementation exercise below is optional and can follow the core workflow without blocking it.
 
-- [ ] Write the multiclass model as `Z = XW + b`, with rows of `X` representing samples, three columns of logits, and softmax producing one probability vector per row.
-- [ ] Write the learning objective as `J = -(1/n) sum_i log(P[i, y_i]) + (lambda/2)||W||_F^2`, leaving the intercept unpenalized. State that this convention defines the gradient and that library regularization scaling must be checked before comparing parameter values.
-- [ ] Derive `dW = X.T @ (P - Y)/n + lambda*W` and `db = mean(P - Y, axis=0)`, with one-hot labels `Y`. Connect this to the binary gradient in [Assignment 3, Q10](./Assigments/assignment_3_3.py).
-- [ ] Explain why regularization matters when synthetic classes are nearly separable, using [Assignment 3, Q11](./Assigments/assignment_3_3.py). Explain softmax's shared-offset redundancy using lecture Section 8.5.1.
-- [ ] **Optional implementation:** create a small NumPy or JAX softmax classifier using development-train's fitted preprocessing, stable log-softmax/log-sum-exp, and float64 for numerical checks. If using JAX, enable x64 before creating arrays.
-- [ ] **Optional verification:** compare analytic/autodiff gradients with central finite differences on a tiny seeded example; check probability sums, finite loss values, and learning on a simple synthetic classification problem.
-- [ ] **Optional experiment:** train with full-batch gradient descent, then compare with the library classifier using the same splits and objective conventions. Compare probabilities and loss rather than expecting identical coefficient matrices.
+- [x] Explain `Z = XW + b`, row/sample dimensions (1600 × 27 inputs and three logits per row), softmax, and class ordering in [SOFTMAX_MATH.md](./reports/SOFTMAX_MATH.md).
+- [x] Define mean cross-entropy plus `(lambda/2)||W||_F^2`, with unpenalized intercepts. Verify locally that the installed unweighted L-BFGS convention gives lambda=1/(C*n)=0.000625 for C=1 and n=1600.
+- [x] Derive `dW = X.T @ (P - Y)/n + lambda*W` and `db = mean(P - Y, axis=0)` through the softmax/log-likelihood chain rule. Connect the matrix residual and mean/sum convention to [Assignment 3, Q10](./Assigments/assignment_3_3.py).
+- [x] Explain separability/regularization using [Assignment 3, Q11](./Assigments/assignment_3_3.py), and distinguish likelihood shift-invariance from the symmetric L2 penalty's behavior under reference-class/common-weight shifts.
+- [x] **Optional implementation completed:** build [a float64 NumPy classifier](./src/softmax.py) with stable log-softmax and full-batch GD using training-only Armijo backtracking; no JAX installation is required.
+- [x] **Optional verification completed:** check all 15 tiny-example parameters with central finite differences (maximum error about 1.95e-11), normalized probabilities, finite extreme-logit loss, shift invariance, unpenalized intercepts, and a simple synthetic learning problem.
+- [x] **Optional experiment completed:** use the same training-fitted preprocessing, split, and regularization convention for NumPy and a tighter L-BFGS reference. GD converges in 7,031 iterations; objective gap is about 5e-13 and maximum validation probability gap about 6.2e-7, with identical predicted labels. Save [the numerical summary](./reports/softmax_math_summary.json) and [executed math notebook](./notebooks/02b_softmax_math.ipynb).
 
-**Output:** an explanation of what the model learns and, optionally, an independently checked implementation. Gradient-check connection: [Assignment 5, Q2](./Assigments/assignment_5.py). There is no need to rewrite every library component to demonstrate understanding.
+**Output completed:** [course-math derivation](./reports/SOFTMAX_MATH.md), a checked NumPy implementation, matched-objective experiment, and fresh-kernel math notebook. All 29 tests pass; source/membership hashes and Step 7 candidate artifacts are unchanged, and no test table was loaded. Next: Step 9, declared tuning/selection. Gradient-check connection: [Assignment 5, Q2](./Assigments/assignment_5.py).
 
 ## 9. Tune a small, declared search and select the model
 

@@ -107,6 +107,18 @@ Open [02_model_comparison.ipynb](./notebooks/02_model_comparison.ipynb) with the
 
 The first fixed comparison gives logistic regression validation macro F1 of 0.5327 and accuracy 0.6000; the tree gives macro F1 of 0.4496 and accuracy 0.6350. The tree misses all healthy validation records, which explains why accuracy and macro F1 rank the models differently. Prior-probability and hard-majority predictions have the same class metrics but very different log loss; the hard-majority result depends on numerical clipping of zero probabilities.
 
+## Connect the classifier to the math
+
+Read [SOFTMAX_MATH.md](./reports/SOFTMAX_MATH.md), then execute [02b_softmax_math.ipynb](./notebooks/02b_softmax_math.ipynb) with the existing local CPU kernel, or run:
+
+```powershell
+& ../.venv/Scripts/python.exe -m src.softmax_experiment
+```
+
+[The NumPy implementation](./src/softmax.py) uses float64 stable log-softmax, the analytic cross-entropy/L2 gradients, and full-batch gradient descent with training-only Armijo backtracking. The experiment checks central finite differences, extreme logits, probability sums, a simple synthetic learning problem, and agreement with a tighter L-BFGS reference on the same transformed development inputs. Local source inspection establishes lambda=1/(C*n)=0.000625 for this installed unweighted L-BFGS convention. No JAX/Optax installation is needed; the already-installed threadpoolctl package is now pinned explicitly because this experiment imports it to limit BLAS threads.
+
+[The measured summary](./reports/softmax_math_summary.json) records objective/probability gaps, optimizer history, regularization scaling, precision, seeds, package versions, and source/membership hashes. The command updates the generated numerical section of the derivation report and a convergence plot. [The educational artifact](./models/educational_softmax.joblib) contains its own training-fitted preprocessing, NumPy parameters, class mapping, and lambda; it does not overwrite any Step 7 candidate. Validation is only a numerical comparison, never an optimizer stopping/tuning input, and the test table is not loaded.
+
 ## Reproducibility and local outputs
 
 [src/config.py](./src/config.py) defines the project root and split/model/bootstrap seeds, all initially 42. Use these constants explicitly in future splitters, randomized models, and `numpy.random.default_rng`; a shared constant alone does not seed future algorithms automatically. The notebook demonstrates a seeded generator and prints the settings.
